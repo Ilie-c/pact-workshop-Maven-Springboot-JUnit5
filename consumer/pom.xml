@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.pact.workshop</groupId>
 	<artifactId>product-catalogue</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.7-SNAPSHOT</version>
 	<name>product-catalogue</name>
 	<description>Product Catalogue service for Pact Workshop</description>
 
