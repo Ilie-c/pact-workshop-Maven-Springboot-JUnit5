@@ -6,6 +6,7 @@ import au.com.dius.pact.provider.junitsupport.Provider;
 import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.StateChangeAction;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
+import au.com.dius.pact.provider.junitsupport.loader.PactBrokerAuth;
 import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider;
 import io.pact.workshop.product_service.products.Product;
 import io.pact.workshop.product_service.products.ProductRepository;
@@ -23,9 +24,15 @@ import java.util.Base64;
 import java.util.Map;
 import java.util.Optional;
 
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@Provider("ProductService")
+//@PactBroker
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("ProductService")
-@PactBroker
+//@PactFolder("pacts")//url
+@PactBroker(host="penta.pactflow.io",
+        scheme = "https",
+        authentication= @PactBrokerAuth(token="xpfbgBdzNOlxLn4hAZtr9w"))
 public class PactVerificationTest {
   @LocalServerPort
   private int port;

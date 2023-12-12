@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -88,15 +88,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>au.com.dius.pact.provider</groupId>
                 <artifactId>maven</artifactId>
                 <version>4.1.17</version>
                 <configuration>
-                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
-                    <pactBrokerUsername>pact_workshop</pactBrokerUsername>
-                    <pactBrokerPassword>pact_workshop</pactBrokerPassword>
+                    <pactBrokerUrl>https://penta.pactflow.io</pactBrokerUrl>
+                    <pactBrokerToken>xpfbgBdzNOlxLn4hAZtr9w</pactBrokerToken>
                     <tags>
                         <tag>prod</tag>
                         <tag>test</tag>

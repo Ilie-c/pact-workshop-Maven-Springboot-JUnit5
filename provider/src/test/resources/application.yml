@@ -1,6 +1,5 @@
 pactbroker:
-  host: localhost
-  port: "9292"
+  host: "penta.pactflow.io"
   auth:
-    username: pact_workshop
-    password: pact_workshop
+    token: "xpfbgBdzNOlxLn4hAZtr9w"
+  tags:
