@@ -32,8 +32,7 @@ import java.util.Optional;
 //@PactFolder("pacts")//url
 @PactBroker(host="penta.pactflow.io",
         scheme = "https",
-        authentication= @PactBrokerAuth(token="xpfbgBdzNOlxLn4hAZtr9w"),
-        providerTags = "Test")
+        authentication= @PactBrokerAuth(token="xpfbgBdzNOlxLn4hAZtr9w"))
 public class PactVerificationTest {
   @LocalServerPort
   private int port;
