@@ -27,7 +27,7 @@ jobs:
       - name: Verify Consumer Tests
         run: mvn -f ./consumer/ verify -Dpact.verifier.publishResults=true -Dpact.provider.version=1.0-SNAPSHOT
       - name: Publish customer tests
-        run: mvn -f ./consumer/  pact:publish --branch ${GIT_BRANCH}
+        run: mvn -f ./consumer/  pact:publish --branch ${GIT_REF:11}
 
   provider-verify:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Verify Provider Tests
-        run: mvn -f ./provider/ verify -Dpact.verifier.publishResults=true -Dpact.provider.version=1.0-SNAPSHOT --auto-detect-version-properties
+        run: mvn -f ./provider/ verify -Dpact.verifier.publishResults=true -Dpact.provider.version=1.0-SNAPSHOT
 
   # Runs on branches as well, so we know the status of our PRs
   can-i-deploy-consumer:
