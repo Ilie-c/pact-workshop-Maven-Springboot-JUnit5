@@ -27,7 +27,7 @@ jobs:
       - name: Verify Consumer Tests
         run: mvn -f ./consumer/ verify -Dpact.verifier.publishResults=true -Dpact.provider.version=1.0-SNAPSHOT
       - name: Publish customer tests
-        run: mvn -f ./consumer/  pact:publish --branch ${GIT_REF:11}
+        run: mvn -f ./consumer/  pact:publish -Dpact.publish.consumer.branchName=${GIT_BRANCH}
 
   provider-verify:
     runs-on: ubuntu-latest

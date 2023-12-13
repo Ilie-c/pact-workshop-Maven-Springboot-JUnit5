@@ -84,6 +84,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -96,9 +97,18 @@
                     <pactBrokerUrl>https://penta.pactflow.io</pactBrokerUrl>
                     <pactBrokerToken>xpfbgBdzNOlxLn4hAZtr9w</pactBrokerToken>
                     <tags>
-                        <tag>prod</tag>
-                        <tag>test</tag>
+                        <tag>main</tag>
                     </tags>
+                    <serviceProviders>
+                        <serviceProvider>
+                            <name>provider1</name>
+                            <PactBroker>
+                                <selectors>
+                                    <matchingBranch/>
+                                </selectors>
+                            </PactBroker>
+                        </serviceProvider>
+                    </serviceProviders>
                 </configuration>
             </plugin>
         </plugins>
