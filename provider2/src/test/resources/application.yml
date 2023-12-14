@@ -1,0 +1,5 @@
+pactbroker:
+  host: "penta.pactflow.io"
+  auth:
+    token: "xpfbgBdzNOlxLn4hAZtr9w"
+  tags:
