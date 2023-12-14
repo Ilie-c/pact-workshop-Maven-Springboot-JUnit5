@@ -1,4 +1,4 @@
-package io.pact.workshop.product_catalogue.clients;
+package io.pact.workshop.product_catalogue.clients.products;
 
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
@@ -7,6 +7,8 @@ import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
 import au.com.dius.pact.consumer.junit5.PactTestFor;
 import au.com.dius.pact.core.model.RequestResponsePact;
 import au.com.dius.pact.core.model.annotations.Pact;
+import io.pact.workshop.product_catalogue.clients.ProductServiceClient;
+import io.pact.workshop.product_catalogue.clients.ProductServiceResponse;
 import io.pact.workshop.product_catalogue.models.Product;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

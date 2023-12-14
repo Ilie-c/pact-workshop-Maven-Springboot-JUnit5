@@ -1,6 +1,8 @@
-package io.pact.workshop.product_catalogue.clients;
+package io.pact.workshop.product_catalogue.clients.products;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.pact.workshop.product_catalogue.clients.ProductServiceClient;
+import io.pact.workshop.product_catalogue.clients.ProductServiceResponse;
 import io.pact.workshop.product_catalogue.models.Product;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

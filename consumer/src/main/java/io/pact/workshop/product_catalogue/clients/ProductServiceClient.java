@@ -1,6 +1,9 @@
 package io.pact.workshop.product_catalogue.clients;
 
+import io.pact.workshop.product_catalogue.models.Description;
 import io.pact.workshop.product_catalogue.models.Product;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -14,34 +17,42 @@ import java.util.Base64;
 
 @Service
 public class ProductServiceClient {
-  @Autowired
-  private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-  @Value("${serviceClients.products.baseUrl}")
-  private String baseUrl;
+    @Getter
+    @Value("${serviceClients.products.baseUrl}")
+    private String baseUrl;
 
-  public ProductServiceResponse fetchProducts() {
-    return callApi("/products", ProductServiceResponse.class);
-  }
 
-  public Product getProductById(long id) {
-    return callApi("/product/" + id, Product.class);
-  }
+    public ProductServiceResponse fetchProducts() {
+        return callApi(baseUrl, "/products", ProductServiceResponse.class);
+    }
 
-  public String getBaseUrl() {
-    return baseUrl;
-  }
+    public Product getProductById(long id) {
+        return callApi(baseUrl, "/product/" + id, Product.class);
+    }
 
-  public void setBaseUrl(String baseUrl) {
-    this.baseUrl = baseUrl;
-  }
+    public DescriptionServiceResponse fetchDescriptions() {
+        return callApi(baseUrl, "/descriptions", DescriptionServiceResponse.class);
+    }
 
-  private <T> T callApi(String path, Class<T> responseType) {
-    HttpHeaders headers = new HttpHeaders();
-    ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
-    buffer.putLong(System.currentTimeMillis());
-    headers.setBearerAuth(Base64.getEncoder().encodeToString(buffer.array()));
-    HttpEntity<?> requestEntity = new HttpEntity<>(headers);
-    return restTemplate.exchange(baseUrl + path, HttpMethod.GET, requestEntity, responseType).getBody();
-  }
+    public Description getDescriptionByProductId(long id) {
+        return callApi(baseUrl, "/description/" + id, Description.class);
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+
+    private <T> T callApi(String baseUrl, String path, Class<T> responseType) {
+        HttpHeaders headers = new HttpHeaders();
+        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
+        buffer.putLong(System.currentTimeMillis());
+        headers.setBearerAuth(Base64.getEncoder().encodeToString(buffer.array()));
+        HttpEntity<?> requestEntity = new HttpEntity<>(headers);
+        return restTemplate.exchange(baseUrl + path, HttpMethod.GET, requestEntity, responseType).getBody();
+    }
+
 }
